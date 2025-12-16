@@ -1,0 +1,9 @@
+Instruksi untuk menambahkan screenshot WARGAGO:
+
+1. Simpan gambar screenshot yang Anda berikan dengan nama: "wargago-screenshot.png"
+2. Letakkan file gambar di folder yang sama dengan index.html
+3. Pastikan nama file sesuai: wargago-screenshot.png
+
+Path file gambar: C:\Peyimpanan Pribadi\Data D\New folder (2)\Semester 5\WargaGo-Docs\wargago-screenshot.png
+
+Gambar akan otomatis ditampilkan di mockup phone pada landing page.
