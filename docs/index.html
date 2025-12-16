@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi WARGAGO - Platform Pengelolaan RT/RW Digital</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="docs-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../wargago-logo.png" alt="WARGAGO Logo" class="logo-image">
+                <span class="logo-text">WARGAGO</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="index.html" class="active">Dokumentasi</a>
+            </div>
+            <button class="btn-download">Download App</button>
+        </div>
+    </nav>
+
+    <div class="docs-layout">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Memulai</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#pengenalan" class="active">Pengenalan</a></li>
+                    <li><a href="#instalasi">Instalasi</a></li>
+                    <li><a href="#konfigurasi-awal">Konfigurasi Awal</a></li>
+                    <li><a href="#struktur-organisasi">Struktur Organisasi</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Panduan Pengguna</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#admin">Admin RT/RW</a></li>
+                    <li><a href="#bendahara">Bendahara</a></li>
+                    <li><a href="#sekretaris">Sekretaris</a></li>
+                    <li><a href="#warga">Warga</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Fitur Utama</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#manajemen-warga">Manajemen Data Warga</a></li>
+                    <li><a href="#sistem-keuangan">Sistem Keuangan</a></li>
+                    <li><a href="#agenda">Agenda & Kegiatan</a></li>
+                    <li><a href="#polling">Polling & Voting</a></li>
+                    <li><a href="#marketplace">Marketplace</a></li>
+                    <li><a href="#laporan">Dashboard & Laporan</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Developer</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#arsitektur">Arsitektur Sistem</a></li>
+                    <li><a href="#api-reference">API Reference</a></li>
+                    <li><a href="#database-schema">Database Schema</a></li>
+                    <li><a href="#kontribusi">Panduan Kontribusi</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <!-- Pengenalan -->
+            <section id="pengenalan" class="doc-section">
+                <h1>Selamat Datang di WARGAGO</h1>
+                <p class="lead">WARGAGO adalah platform digital terlengkap untuk pengelolaan RT/RW modern yang mengintegrasikan berbagai aspek pengelolaan komunitas dalam satu aplikasi yang mudah digunakan.</p>
+
+                <div class="info-box">
+                    <div class="info-icon">ℹ️</div>
+                    <div>
+                        <h4>Versi Terbaru: 1.0.0</h4>
+                        <p>Dirilis pada 16 Desember 2025</p>
+                    </div>
+                </div>
+
+                <h2>Apa itu WARGAGO?</h2>
+                <p>WARGAGO adalah solusi komprehensif untuk digitalisasi pengelolaan RT/RW yang mencakup:</p>
+
+                <ul class="feature-list">
+                    <li><strong>Manajemen Data Warga</strong> - Sistem KYC otomatis dengan OCR dan face detection</li>
+                    <li><strong>Sistem Keuangan Terintegrasi</strong> - Transparansi penuh untuk iuran dan pengeluaran</li>
+                    <li><strong>Agenda Komunitas</strong> - Manajemen kegiatan dengan reminder otomatis</li>
+                    <li><strong>Polling Digital</strong> - Voting demokratis dengan hasil real-time</li>
+                    <li><strong>Marketplace Lokal</strong> - Platform jual-beli antar warga</li>
+                    <li><strong>Dashboard & Pelaporan</strong> - Visualisasi data lengkap berbasis role</li>
+                </ul>
+
+                <h2>Mengapa WARGAGO?</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>🎯 Efisiensi</h3>
+                        <p>Otomasi proses administratif menghemat waktu hingga 70%</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>💎 Transparansi</h3>
+                        <p>Semua transaksi keuangan tercatat dan dapat diaudit</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📱 Aksesibilitas</h3>
+                        <p>Akses kapan saja, dimana saja melalui mobile app</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🔒 Keamanan</h3>
+                        <p>Enkripsi end-to-end dan autentikasi multi-faktor</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instalasi -->
+            <section id="instalasi" class="doc-section">
+                <h1>Instalasi</h1>
+                <p>Panduan lengkap untuk menginstal dan mengatur WARGAGO di lingkungan RT/RW Anda.</p>
+
+                <h2>Persyaratan Sistem</h2>
+                <div class="requirements-grid">
+                    <div class="req-card">
+                        <h4>Mobile App (Android)</h4>
+                        <ul>
+                            <li>Android 8.0 atau lebih baru</li>
+                            <li>RAM minimal 2GB</li>
+                            <li>Storage 100MB+</li>
+                            <li>Koneksi internet</li>
+                        </ul>
+                    </div>
+                    <div class="req-card">
+                        <h4>Mobile App (iOS)</h4>
+                        <ul>
+                            <li>iOS 13.0 atau lebih baru</li>
+                            <li>iPhone 6s atau lebih baru</li>
+                            <li>Storage 100MB+</li>
+                            <li>Koneksi internet</li>
+                        </ul>
+                    </div>
+                    <div class="req-card">
+                        <h4>Web Dashboard</h4>
+                        <ul>
+                            <li>Browser modern (Chrome, Firefox, Safari, Edge)</li>
+                            <li>JavaScript enabled</li>
+                            <li>Screen resolution 1024x768+</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Download Aplikasi</h2>
+                <div class="download-section">
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                <path d="M17.05 20.28C16.03 21.23 14.96 21.08 13.95 20.63C12.88 20.17 11.91 20.15 10.79 20.63C9.37 21.25 8.59 21.07 7.69 20.28C2.77 15.25 3.51 7.59 9.05 7.31C10.4 7.38 11.34 8.05 12.13 8.11C13.31 7.87 14.44 7.18 15.7 7.27C17.21 7.39 18.35 7.99 19.1 9.07C15.98 10.94 16.72 15.05 19.58 16.09C19.01 17.56 18.27 19.01 17.04 20.29L17.05 20.28ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3C16.06 5.58 13.43 7.5 12.03 7.25Z" fill="#1D4ED8"/>
+                            </svg>
+                        </div>
+                        <h3>Download untuk iOS</h3>
+                        <p>Tersedia di App Store</p>
+                        <button class="btn-download-app">Download Sekarang</button>
+                    </div>
+                    <div class="download-card">
+                        <div class="download-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#1D4ED8"/>
+                            </svg>
+                        </div>
+                        <h3>Download untuk Android</h3>
+                        <p>Tersedia di Google Play</p>
+                        <button class="btn-download-app">Download Sekarang</button>
+                    </div>
+                </div>
+
+                <h2>Langkah Instalasi</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Download Aplikasi</h3>
+                            <p>Download WARGAGO dari App Store atau Google Play Store sesuai perangkat Anda.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Buka Aplikasi</h3>
+                            <p>Setelah instalasi selesai, buka aplikasi WARGAGO dari home screen.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Registrasi/Login</h3>
+                            <p>Untuk admin baru, pilih "Daftar RT/RW Baru". Untuk warga, minta kode undangan dari admin.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Verifikasi</h3>
+                            <p>Verifikasi nomor telepon dan email Anda untuk keamanan akun.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Konfigurasi Awal -->
+            <section id="konfigurasi-awal" class="doc-section">
+                <h1>Konfigurasi Awal</h1>
+                <p>Panduan setup awal untuk admin RT/RW yang baru mendaftar.</p>
+
+                <h2>Setup RT/RW Baru</h2>
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Penting!</h4>
+                        <p>Pastikan Anda adalah pengurus RT/RW yang sah sebelum membuat akun baru. Data yang dimasukkan harus akurat karena akan digunakan untuk administrasi resmi.</p>
+                    </div>
+                </div>
+
+                <h3>1. Informasi RT/RW</h3>
+                <p>Lengkapi informasi dasar RT/RW Anda:</p>
+                <ul>
+                    <li>Nama RT/RW</li>
+                    <li>Nomor RT/RW</li>
+                    <li>Alamat lengkap</li>
+                    <li>Kelurahan/Desa</li>
+                    <li>Kecamatan</li>
+                    <li>Kota/Kabupaten</li>
+                    <li>Provinsi</li>
+                    <li>Kode Pos</li>
+                </ul>
+
+                <h3>2. Data Pengurus</h3>
+                <p>Tambahkan data pengurus RT/RW:</p>
+                <div class="code-block">
+                    <code>
+• Ketua RT/RW<br>
+• Wakil Ketua<br>
+• Sekretaris<br>
+• Bendahara<br>
+• Seksi-seksi (opsional)
+                    </code>
+                </div>
+
+                <h3>3. Konfigurasi Iuran</h3>
+                <p>Setup jenis iuran dan nominal:</p>
+                <ul>
+                    <li>Iuran bulanan RT</li>
+                    <li>Iuran bulanan RW</li>
+                    <li>Iuran sampah</li>
+                    <li>Iuran keamanan (jika ada)</li>
+                    <li>Iuran lainnya</li>
+                </ul>
+
+                <h3>4. Bank Account</h3>
+                <p>Masukkan informasi rekening untuk transparansi keuangan:</p>
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Tips:</strong> Gunakan rekening khusus RT/RW untuk memudahkan pelacakan dan pelaporan keuangan.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Struktur Organisasi -->
+            <section id="struktur-organisasi" class="doc-section">
+                <h1>Struktur Organisasi & Role</h1>
+                <p>WARGAGO memiliki sistem role-based access control (RBAC) untuk mengatur hak akses pengguna.</p>
+
+                <h2>Hierarki Role</h2>
+                <div class="role-diagram">
+                    <div class="role-box admin">
+                        <h3>Super Admin</h3>
+                        <p>Akses penuh ke semua fitur</p>
+                    </div>
+                    <div class="role-boxes-row">
+                        <div class="role-box">
+                            <h4>Admin RT/RW</h4>
+                            <p>Manajemen warga, agenda, polling</p>
+                        </div>
+                        <div class="role-box">
+                            <h4>Bendahara</h4>
+                            <p>Manajemen keuangan lengkap</p>
+                        </div>
+                        <div class="role-box">
+                            <h4>Sekretaris</h4>
+                            <p>Administrasi & dokumentasi</p>
+                        </div>
+                    </div>
+                    <div class="role-box warga">
+                        <h4>Warga</h4>
+                        <p>Akses basic: profil, iuran, marketplace, polling</p>
+                    </div>
+                </div>
+
+                <h2>Hak Akses per Role</h2>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fitur</th>
+                                <th>Warga</th>
+                                <th>Sekretaris</th>
+                                <th>Bendahara</th>
+                                <th>Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lihat Profil Sendiri</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Edit Profil Sendiri</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Lihat Data Warga</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Tambah/Edit Warga</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Lihat Keuangan</td>
+                                <td>Sendiri</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Kelola Transaksi</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Buat Polling</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Vote Polling</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Marketplace</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- PANDUAN PENGGUNA -->
+            <section id="admin" class="doc-section">
+                <h1>Panduan Admin RT/RW</h1>
+                <p class="lead">Panduan lengkap untuk admin dalam mengelola sistem WARGAGO.</p>
+
+                <h2>Dashboard Admin</h2>
+                <p>Dashboard admin memberikan overview lengkap tentang kondisi RT/RW:</p>
+                <ul>
+                    <li>Total warga dan jumlah KK (Kepala Keluarga)</li>
+                    <li>Ringkasan keuangan (saldo, pemasukan, pengeluaran bulan ini)</li>
+                    <li>Agenda mendatang</li>
+                    <li>Polling aktif</li>
+                    <li>Transaksi terbaru</li>
+                </ul>
+
+                <h2>Manajemen Warga</h2>
+
+                <h3>Menambah Warga Baru</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Buka Menu Warga</h3>
+                            <p>Klik menu "Warga" di sidebar, lalu klik tombol "+ Tambah Warga Baru"</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Upload KTP/KK</h3>
+                            <p>Upload foto KTP atau KK. Sistem akan otomatis ekstrak data menggunakan OCR.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Verifikasi Data</h3>
+                            <p>Periksa data hasil OCR dan lakukan koreksi jika diperlukan.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Face Detection (Opsional)</h3>
+                            <p>Ambil foto wajah untuk verifikasi identitas tambahan.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Simpan & Kirim Undangan</h3>
+                            <p>Simpan data dan sistem akan otomatis mengirim kode undangan via WhatsApp/SMS.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Edit Data Warga</h3>
+                <p>Admin dapat mengubah data warga kapan saja:</p>
+                <ul>
+                    <li>Informasi personal (nama, NIK, tanggal lahir, dll)</li>
+                    <li>Alamat dan nomor rumah</li>
+                    <li>Kontak (telepon, email)</li>
+                    <li>Status keanggotaan (aktif, pindah, meninggal)</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Perhatian!</h4>
+                        <p>Perubahan data warga akan tercatat dalam history log untuk audit trail.</p>
+                    </div>
+                </div>
+
+                <h2>Membuat Polling</h2>
+                <p>Admin dapat membuat polling untuk keputusan bersama:</p>
+
+                <h3>Jenis Polling</h3>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>📊 Single Choice</h3>
+                        <p>Warga hanya bisa memilih satu opsi (Ya/Tidak, Pilihan A/B/C)</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>✅ Multiple Choice</h3>
+                        <p>Warga bisa memilih beberapa opsi sekaligus</p>
+                    </div>
+                </div>
+
+                <h3>Langkah Membuat Polling</h3>
+                <div class="code-block">
+                    <code>
+1. Menu Polling → Buat Polling Baru<br>
+2. Isi judul dan deskripsi polling<br>
+3. Tambahkan opsi jawaban (min. 2 opsi)<br>
+4. Pilih jenis polling (single/multiple choice)<br>
+5. Tentukan mode voting (anonim/named)<br>
+6. Set deadline polling<br>
+7. Publikasikan<br>
+<br>
+✅ Warga akan menerima notifikasi push
+                    </code>
+                </div>
+
+                <h2>Mengelola Agenda</h2>
+                <p>Buat dan kelola kegiatan RT/RW dengan mudah:</p>
+
+                <h3>Membuat Kegiatan Baru</h3>
+                <ul>
+                    <li><strong>Judul kegiatan:</strong> Nama acara (misal: Kerja Bakti, Pengajian, Rapat RT)</li>
+                    <li><strong>Tanggal & Waktu:</strong> Jadwal pelaksanaan</li>
+                    <li><strong>Lokasi:</strong> Tempat kegiatan</li>
+                    <li><strong>Deskripsi:</strong> Detail acara</li>
+                    <li><strong>RSVP:</strong> Aktifkan jika butuh konfirmasi kehadiran</li>
+                    <li><strong>Reminder:</strong> Set notifikasi otomatis (H-1, H-3, H-7)</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Tips:</strong> Aktifkan RSVP untuk kegiatan yang memerlukan persiapan (makanan, tempat duduk, dll) agar bisa estimasi peserta.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="bendahara" class="doc-section">
+                <h1>Panduan Bendahara</h1>
+                <p class="lead">Panduan lengkap manajemen keuangan RT/RW yang transparan dan akuntabel.</p>
+
+                <h2>Dashboard Keuangan</h2>
+                <p>Dashboard bendahara menampilkan:</p>
+                <ul>
+                    <li>Saldo kas RT/RW real-time</li>
+                    <li>Pemasukan bulan ini (iuran + lainnya)</li>
+                    <li>Pengeluaran bulan ini per kategori</li>
+                    <li>Grafik cash flow 6 bulan terakhir</li>
+                    <li>Daftar tagihan yang belum lunas</li>
+                </ul>
+
+                <h2>Mengelola Iuran</h2>
+
+                <h3>Set Iuran Bulanan</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Konfigurasi Jenis Iuran</h3>
+                            <p>Menu Keuangan → Setting Iuran → Tambah/Edit jenis iuran</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Tentukan Nominal</h3>
+                            <p>Set nominal per jenis iuran (bisa berbeda untuk RT dan RW)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Generate Tagihan Otomatis</h3>
+                            <p>Sistem akan otomatis generate tagihan setiap tanggal yang ditentukan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Catat Pembayaran Iuran</h3>
+                <p>Bendahara dapat mencatat pembayaran dengan 2 cara:</p>
+
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>💳 Manual Entry</h3>
+                        <p>Input manual untuk pembayaran tunai. Pilih warga, pilih tagihan, input nominal, simpan.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📱 Scan QR Code</h3>
+                        <p>Warga scan QR code untuk bayar digital. Status otomatis update setelah transfer.</p>
+                    </div>
+                </div>
+
+                <h2>Mencatat Pengeluaran</h2>
+                <p>Semua pengeluaran RT/RW harus dicatat untuk transparansi:</p>
+
+                <div class="code-block">
+                    <code>
+Menu Keuangan → Pengeluaran → Tambah Pengeluaran<br>
+<br>
+Form yang harus diisi:<br>
+• Tanggal transaksi<br>
+• Kategori (Operasional, Kegiatan, Infrastruktur, dll)<br>
+• Deskripsi<br>
+• Nominal<br>
+• Bukti transaksi (foto/scan nota)<br>
+• Catatan tambahan (opsional)<br>
+<br>
+✅ Transaksi langsung tercatat di laporan
+                    </code>
+                </div>
+
+                <h3>Kategori Pengeluaran</h3>
+                <ul>
+                    <li><strong>Operasional:</strong> Listrik, air, ATK, dll</li>
+                    <li><strong>Kegiatan:</strong> Biaya acara, konsumsi rapat</li>
+                    <li><strong>Infrastruktur:</strong> Perbaikan jalan, lampu, dll</li>
+                    <li><strong>Kebersihan:</strong> Sampah, cleaning service</li>
+                    <li><strong>Keamanan:</strong> Satpam, CCTV</li>
+                    <li><strong>Lain-lain:</strong> Pengeluaran tidak terkategori</li>
+                </ul>
+
+                <h2>Laporan Keuangan</h2>
+                <p>Generate laporan keuangan untuk transparansi:</p>
+
+                <h3>Jenis Laporan</h3>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jenis Laporan</th>
+                                <th>Periode</th>
+                                <th>Format Export</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kas Harian</td>
+                                <td>Harian</td>
+                                <td>PDF, Excel</td>
+                            </tr>
+                            <tr>
+                                <td>Kas Bulanan</td>
+                                <td>Bulanan</td>
+                                <td>PDF, Excel</td>
+                            </tr>
+                            <tr>
+                                <td>Laporan Iuran</td>
+                                <td>Bulanan/Tahunan</td>
+                                <td>PDF, Excel, CSV</td>
+                            </tr>
+                            <tr>
+                                <td>Laporan Pengeluaran</td>
+                                <td>Bulanan/Tahunan</td>
+                                <td>PDF, Excel</td>
+                            </tr>
+                            <tr>
+                                <td>Neraca</td>
+                                <td>Tahunan</td>
+                                <td>PDF, Excel</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Best Practice:</strong> Share laporan bulanan ke grup warga untuk transparansi dan kepercayaan.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sekretaris" class="doc-section">
+                <h1>Panduan Sekretaris</h1>
+                <p class="lead">Panduan untuk sekretaris dalam mengelola administrasi dan dokumentasi RT/RW.</p>
+
+                <h2>Tugas Utama Sekretaris</h2>
+                <ul class="feature-list">
+                    <li><strong>Administrasi Warga</strong> - Input dan update data warga, KK, dan dokumen</li>
+                    <li><strong>Surat Menyurat</strong> - Buat surat pengantar, keterangan, dll</li>
+                    <li><strong>Notulensi</strong> - Catat hasil rapat dan keputusan</li>
+                    <li><strong>Dokumentasi</strong> - Kelola foto dan video kegiatan</li>
+                    <li><strong>Arsip</strong> - Kelola arsip digital dokumen penting</li>
+                </ul>
+
+                <h2>Mengelola Data Warga</h2>
+                <p>Sekretaris memiliki akses untuk melihat dan mengedit data warga:</p>
+
+                <h3>Database Warga</h3>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>👨‍👩‍👧‍👦 Per Keluarga</h3>
+                        <p>Lihat struktur keluarga lengkap dengan kepala keluarga dan anggota</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🏠 Per Rumah</h3>
+                        <p>Lihat siapa saja yang tinggal di setiap alamat/nomor rumah</p>
+                    </div>
+                </div>
+
+                <h2>Surat Menyurat</h2>
+                <p>Sistem menyediakan template surat yang bisa disesuaikan:</p>
+
+                <h3>Template Surat</h3>
+                <ul>
+                    <li>Surat Pengantar RT/RW</li>
+                    <li>Surat Keterangan Domisili</li>
+                    <li>Surat Keterangan Tidak Mampu (SKTM)</li>
+                    <li>Surat Keterangan Pindah</li>
+                    <li>Surat Keterangan Kelahiran</li>
+                    <li>Surat Keterangan Kematian</li>
+                    <li>Surat Undangan Rapat/Kegiatan</li>
+                </ul>
+
+                <div class="code-block">
+                    <code>
+Cara Membuat Surat:<br>
+<br>
+1. Menu Surat → Buat Surat Baru<br>
+2. Pilih template yang sesuai<br>
+3. Isi data (nama, NIK, keperluan, dll)<br>
+4. Preview surat<br>
+5. Export ke PDF<br>
+6. Print atau kirim digital<br>
+<br>
+✅ Surat otomatis tersimpan di arsip
+                    </code>
+                </div>
+
+                <h2>Notulensi Rapat</h2>
+                <p>Catat hasil rapat dengan format terstruktur:</p>
+                <ul>
+                    <li>Tanggal, waktu, tempat rapat</li>
+                    <li>Daftar hadir peserta</li>
+                    <li>Agenda rapat</li>
+                    <li>Pembahasan per agenda</li>
+                    <li>Keputusan yang diambil</li>
+                    <li>Action items dan PIC</li>
+                    <li>Foto dokumentasi (opsional)</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Tips:</strong> Langsung input notulen saat rapat berlangsung agar tidak lupa detail pembahasan.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="warga" class="doc-section">
+                <h1>Panduan Warga</h1>
+                <p class="lead">Panduan untuk warga dalam menggunakan aplikasi WARGAGO sehari-hari.</p>
+
+                <h2>Aktivasi Akun</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Terima Undangan</h3>
+                            <p>Dapatkan kode undangan dari admin RT/RW via WhatsApp/SMS</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Download & Install</h3>
+                            <p>Download WARGAGO dari App Store atau Play Store</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Daftar Akun</h3>
+                            <p>Masukkan kode undangan, nomor HP, dan buat password</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Verifikasi</h3>
+                            <p>Verifikasi nomor HP dengan kode OTP</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Lengkapi Profil</h3>
+                            <p>Upload foto profil dan lengkapi data diri jika diperlukan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Fitur untuk Warga</h2>
+
+                <h3>1. Dashboard</h3>
+                <p>Lihat informasi penting:</p>
+                <ul>
+                    <li>Tagihan iuran (lunas/belum lunas)</li>
+                    <li>Agenda kegiatan mendatang</li>
+                    <li>Polling aktif</li>
+                    <li>Pengumuman terbaru</li>
+                </ul>
+
+                <h3>2. Profil & Keluarga</h3>
+                <p>Kelola data pribadi dan keluarga:</p>
+                <ul>
+                    <li>Lihat dan edit data diri</li>
+                    <li>Lihat anggota keluarga</li>
+                    <li>Update kontak darurat</li>
+                    <li>Ganti password</li>
+                </ul>
+
+                <h3>3. Iuran</h3>
+                <p>Cek dan bayar iuran RT/RW:</p>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>📊 Lihat Tagihan</h3>
+                        <p>Cek tagihan bulanan yang harus dibayar dan history pembayaran</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>💳 Bayar Iuran</h3>
+                        <p>Bayar via transfer bank atau tunai ke bendahara dengan scan QR</p>
+                    </div>
+                </div>
+
+                <h3>4. Polling & Voting</h3>
+                <p>Ikut berpartisipasi dalam keputusan bersama:</p>
+                <ul>
+                    <li>Lihat polling yang sedang berjalan</li>
+                    <li>Vote untuk pilihan Anda</li>
+                    <li>Lihat hasil polling (real-time atau setelah selesai)</li>
+                    <li>Cek history voting Anda</li>
+                </ul>
+
+                <h3>5. Marketplace</h3>
+                <p>Jual beli produk lokal dengan tetangga:</p>
+
+                <h4>Sebagai Pembeli:</h4>
+                <ul>
+                    <li>Browse produk dari warga lain</li>
+                    <li>Tambah ke cart dan checkout</li>
+                    <li>Chat penjual untuk tanya-tanya</li>
+                    <li>Konfirmasi penerimaan barang</li>
+                </ul>
+
+                <h4>Sebagai Penjual:</h4>
+                <ul>
+                    <li>Upload produk (foto, nama, harga, stok)</li>
+                    <li>Kelola pesanan masuk</li>
+                    <li>Update status pengiriman</li>
+                    <li>Lihat laporan penjualan</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Catatan Marketplace</h4>
+                        <p>Marketplace WARGAGO adalah platform internal RT/RW. Transaksi dilakukan langsung antar warga. WARGAGO tidak memfasilitasi pembayaran atau pengiriman.</p>
+                    </div>
+                </div>
+
+                <h3>6. Agenda & RSVP</h3>
+                <p>Ikut kegiatan RT/RW:</p>
+                <ul>
+                    <li>Lihat kalender kegiatan</li>
+                    <li>RSVP untuk konfirmasi kehadiran</li>
+                    <li>Set reminder di kalender HP</li>
+                    <li>Lihat lokasi kegiatan di maps</li>
+                </ul>
+
+                <h3>7. Pengumuman</h3>
+                <p>Tetap update dengan informasi terbaru:</p>
+                <ul>
+                    <li>Baca pengumuman dari pengurus</li>
+                    <li>Terima push notification untuk info penting</li>
+                    <li>Search pengumuman lama</li>
+                </ul>
+            </section>
+
+            <!-- Continue button -->
+            <div class="docs-pagination">
+                <a href="#struktur-organisasi" class="btn-prev">← Kembali: Struktur Organisasi</a>
+                <a href="#manajemen-warga" class="btn-next">Lanjut: Fitur Utama →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="docs-script.js"></script>
+</body>
+</html>
+

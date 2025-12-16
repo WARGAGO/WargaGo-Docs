@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Guide - WARGAGO Documentation</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="docs-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../wargago-logo.png" alt="WARGAGO Logo" class="logo-image">
+                <span class="logo-text">WARGAGO</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="index.html">Dokumentasi</a>
+                <a href="developer.html" class="active">Developer</a>
+            </div>
+            <button class="btn-download">Download App</button>
+        </div>
+    </nav>
+
+    <div class="docs-layout">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Developer</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#arsitektur" class="active">Arsitektur Sistem</a></li>
+                    <li><a href="#tech-stack">Tech Stack</a></li>
+                    <li><a href="#api-reference">API Reference</a></li>
+                    <li><a href="#database-schema">Database Schema</a></li>
+                    <li><a href="#kontribusi">Panduan Kontribusi</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Quick Links</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">← Dokumentasi Utama</a></li>
+                    <li><a href="features.html">← Fitur Utama</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <!-- Arsitektur Sistem -->
+            <section id="arsitektur" class="doc-section">
+                <h1>Arsitektur Sistem WARGAGO</h1>
+                <p class="lead">Arsitektur modern dengan microservices, scalable, dan secure untuk mendukung ribuan RT/RW di seluruh Indonesia.</p>
+
+                <h2>Diagram Arsitektur</h2>
+                <div class="code-block">
+                    <code>
+┌─────────────────────────────────────────────────────────┐<br>
+│                    CLIENT LAYER                          │<br>
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │<br>
+│  │ Mobile App   │  │   Web App    │  │  Admin Panel │  │<br>
+│  │ (React Native)  │  (React.js)  │  │  (React.js)  │  │<br>
+│  └──────────────┘  └──────────────┘  └──────────────┘  │<br>
+└─────────────────────────────────────────────────────────┘<br>
+                           │<br>
+                           ▼<br>
+┌─────────────────────────────────────────────────────────┐<br>
+│                   API GATEWAY (NGINX)                    │<br>
+│          Load Balancer + Rate Limiting + SSL             │<br>
+└─────────────────────────────────────────────────────────┘<br>
+                           │<br>
+                           ▼<br>
+┌─────────────────────────────────────────────────────────┐<br>
+│                 BACKEND SERVICES (Node.js)               │<br>
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐  │<br>
+│  │  Auth    │ │  User    │ │ Finance  │ │ Polling  │  │<br>
+│  │ Service  │ │ Service  │ │ Service  │ │ Service  │  │<br>
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘  │<br>
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐  │<br>
+│  │ Agenda   │ │Marketplace│ │  OCR/AI  │ │ Notif    │  │<br>
+│  │ Service  │ │ Service  │ │ Service  │ │ Service  │  │<br>
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘  │<br>
+└─────────────────────────────────────────────────────────┘<br>
+                           │<br>
+                           ▼<br>
+┌─────────────────────────────────────────────────────────┐<br>
+│                    DATABASE LAYER                        │<br>
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │<br>
+│  │  PostgreSQL  │  │    Redis     │  │  MongoDB     │  │<br>
+│  │ (Main DB)    │  │   (Cache)    │  │   (Logs)     │  │<br>
+│  └──────────────┘  └──────────────┘  └──────────────┘  │<br>
+└─────────────────────────────────────────────────────────┘<br>
+                           │<br>
+                           ▼<br>
+┌─────────────────────────────────────────────────────────┐<br>
+│                  EXTERNAL SERVICES                       │<br>
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐  │<br>
+│  │   AWS    │ │WhatsApp  │ │ Payment  │ │   OCR    │  │<br>
+│  │   S3     │ │   API    │ │ Gateway  │ │  Engine  │  │<br>
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘  │<br>
+└─────────────────────────────────────────────────────────┘
+                    </code>
+                </div>
+
+                <h2>Komponen Utama</h2>
+
+                <h3>1. Client Layer</h3>
+                <ul>
+                    <li><strong>Mobile App (React Native):</strong> Aplikasi mobile untuk iOS dan Android</li>
+                    <li><strong>Web App (React.js):</strong> Aplikasi web untuk desktop</li>
+                    <li><strong>Admin Panel (React.js):</strong> Dashboard admin khusus</li>
+                </ul>
+
+                <h3>2. API Gateway</h3>
+                <ul>
+                    <li><strong>NGINX:</strong> Reverse proxy dan load balancer</li>
+                    <li><strong>Rate Limiting:</strong> Proteksi dari abuse</li>
+                    <li><strong>SSL/TLS:</strong> Enkripsi komunikasi</li>
+                    <li><strong>Request Routing:</strong> Route ke microservice yang tepat</li>
+                </ul>
+
+                <h3>3. Backend Services</h3>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>Auth Service</h3>
+                        <p>Login, register, JWT, refresh token, password reset</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>User Service</h3>
+                        <p>CRUD warga, KYC, OCR, face detection</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Finance Service</h3>
+                        <p>Iuran, transaksi, laporan keuangan</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Polling Service</h3>
+                        <p>Create polling, voting, hasil real-time</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Agenda Service</h3>
+                        <p>Kegiatan, RSVP, attendance tracking</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Marketplace Service</h3>
+                        <p>Produk, order, chat, rating</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>OCR/AI Service</h3>
+                        <p>Image processing, OCR, face detection</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Notification Service</h3>
+                        <p>Push notif, WhatsApp, email, SMS</p>
+                    </div>
+                </div>
+
+                <h3>4. Database Layer</h3>
+                <ul>
+                    <li><strong>PostgreSQL:</strong> Main relational database untuk data transaksional</li>
+                    <li><strong>Redis:</strong> Caching layer untuk performa</li>
+                    <li><strong>MongoDB:</strong> Document store untuk logs dan analytics</li>
+                </ul>
+
+                <h3>5. External Services</h3>
+                <ul>
+                    <li><strong>AWS S3:</strong> Storage untuk foto, dokumen, file</li>
+                    <li><strong>WhatsApp Business API:</strong> Notifikasi via WhatsApp</li>
+                    <li><strong>Payment Gateway:</strong> Integrasi pembayaran digital</li>
+                    <li><strong>OCR Engine:</strong> Google Vision API / Tesseract</li>
+                </ul>
+            </section>
+
+            <!-- Tech Stack -->
+            <section id="tech-stack" class="doc-section">
+                <h1>Tech Stack</h1>
+                <p class="lead">Teknologi modern dan proven yang digunakan dalam development WARGAGO.</p>
+
+                <h2>Frontend</h2>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teknologi</th>
+                                <th>Versi</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>React Native</td>
+                                <td>0.72+</td>
+                                <td>Mobile app framework</td>
+                            </tr>
+                            <tr>
+                                <td>React.js</td>
+                                <td>18.2+</td>
+                                <td>Web app framework</td>
+                            </tr>
+                            <tr>
+                                <td>TypeScript</td>
+                                <td>5.0+</td>
+                                <td>Type-safe JavaScript</td>
+                            </tr>
+                            <tr>
+                                <td>Redux Toolkit</td>
+                                <td>1.9+</td>
+                                <td>State management</td>
+                            </tr>
+                            <tr>
+                                <td>React Query</td>
+                                <td>4.0+</td>
+                                <td>Data fetching & caching</td>
+                            </tr>
+                            <tr>
+                                <td>Tailwind CSS</td>
+                                <td>3.3+</td>
+                                <td>Utility-first CSS</td>
+                            </tr>
+                            <tr>
+                                <td>Chart.js</td>
+                                <td>4.0+</td>
+                                <td>Data visualization</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Backend</h2>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Teknologi</th>
+                                <th>Versi</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Node.js</td>
+                                <td>20 LTS</td>
+                                <td>JavaScript runtime</td>
+                            </tr>
+                            <tr>
+                                <td>Express.js</td>
+                                <td>4.18+</td>
+                                <td>Web framework</td>
+                            </tr>
+                            <tr>
+                                <td>TypeScript</td>
+                                <td>5.0+</td>
+                                <td>Type-safe backend code</td>
+                            </tr>
+                            <tr>
+                                <td>Prisma</td>
+                                <td>5.0+</td>
+                                <td>ORM untuk database</td>
+                            </tr>
+                            <tr>
+                                <td>JWT</td>
+                                <td>9.0+</td>
+                                <td>Authentication</td>
+                            </tr>
+                            <tr>
+                                <td>Socket.io</td>
+                                <td>4.6+</td>
+                                <td>Real-time communication</td>
+                            </tr>
+                            <tr>
+                                <td>Bull</td>
+                                <td>4.11+</td>
+                                <td>Job queue (Redis-based)</td>
+                            </tr>
+                            <tr>
+                                <td>Jest</td>
+                                <td>29.0+</td>
+                                <td>Testing framework</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Database & Storage</h2>
+                <ul class="feature-list">
+                    <li><strong>PostgreSQL 15:</strong> Main relational database</li>
+                    <li><strong>Redis 7:</strong> Caching & session storage</li>
+                    <li><strong>MongoDB 7:</strong> Logs & analytics data</li>
+                    <li><strong>AWS S3:</strong> Object storage untuk file</li>
+                </ul>
+
+                <h2>DevOps & Infrastructure</h2>
+                <ul class="feature-list">
+                    <li><strong>Docker:</strong> Containerization</li>
+                    <li><strong>Kubernetes:</strong> Orchestration (production)</li>
+                    <li><strong>GitHub Actions:</strong> CI/CD pipeline</li>
+                    <li><strong>Nginx:</strong> Reverse proxy & load balancer</li>
+                    <li><strong>PM2:</strong> Process manager (development)</li>
+                    <li><strong>Sentry:</strong> Error tracking</li>
+                    <li><strong>New Relic:</strong> Performance monitoring</li>
+                </ul>
+            </section>
+
+            <!-- API Reference -->
+            <section id="api-reference" class="doc-section">
+                <h1>API Reference</h1>
+                <p class="lead">RESTful API documentation dengan contoh request dan response.</p>
+
+                <h2>Base URL</h2>
+                <div class="code-block">
+                    <code>
+Production: https://api.wargago.id/v1<br>
+Staging: https://api-staging.wargago.id/v1<br>
+Development: http://localhost:3000/v1
+                    </code>
+                </div>
+
+                <h2>Authentication</h2>
+                <p>Semua request (kecuali login/register) memerlukan JWT token di header:</p>
+                <div class="code-block">
+                    <code>
+Authorization: Bearer &lt;your_jwt_token&gt;
+                    </code>
+                </div>
+
+                <h3>POST /auth/login</h3>
+                <p>Login dengan nomor HP dan password.</p>
+
+                <h4>Request Body:</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "phone": "081234567890",<br>
+  "password": "your_password"<br>
+}
+                    </code>
+                </div>
+
+                <h4>Response (200 OK):</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": true,<br>
+  "data": {<br>
+    "user": {<br>
+      "id": "usr_123456",<br>
+      "name": "John Doe",<br>
+      "phone": "081234567890",<br>
+      "role": "warga",<br>
+      "rt_rw_id": "rtrw_789"<br>
+    },<br>
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",<br>
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h3>GET /users/me</h3>
+                <p>Get current user profile.</p>
+
+                <h4>Response (200 OK):</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": true,<br>
+  "data": {<br>
+    "id": "usr_123456",<br>
+    "nik": "3201234567890123",<br>
+    "name": "John Doe",<br>
+    "phone": "081234567890",<br>
+    "email": "john@example.com",<br>
+    "address": "Jl. Raya No. 123",<br>
+    "role": "warga",<br>
+    "status": "active",<br>
+    "rt_rw_id": "rtrw_789",<br>
+    "kk_number": "3201234567890001",<br>
+    "created_at": "2025-01-01T00:00:00Z"<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h3>GET /finance/iuran/my</h3>
+                <p>Get iuran status for current user.</p>
+
+                <h4>Query Parameters:</h4>
+                <ul>
+                    <li><code>month</code> (optional): Filter by month (1-12)</li>
+                    <li><code>year</code> (optional): Filter by year (2025)</li>
+                </ul>
+
+                <h4>Response (200 OK):</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": true,<br>
+  "data": {<br>
+    "total_tagihan": 35000,<br>
+    "total_dibayar": 35000,<br>
+    "status": "lunas",<br>
+    "items": [<br>
+      {<br>
+        "id": "iur_001",<br>
+        "jenis": "Iuran RT",<br>
+        "nominal": 10000,<br>
+        "status": "lunas",<br>
+        "paid_at": "2025-12-05T10:00:00Z"<br>
+      },<br>
+      {<br>
+        "id": "iur_002",<br>
+        "jenis": "Iuran RW",<br>
+        "nominal": 5000,<br>
+        "status": "lunas",<br>
+        "paid_at": "2025-12-05T10:00:00Z"<br>
+      },<br>
+      {<br>
+        "id": "iur_003",<br>
+        "jenis": "Iuran Sampah",<br>
+        "nominal": 20000,<br>
+        "status": "lunas",<br>
+        "paid_at": "2025-12-05T10:00:00Z"<br>
+      }<br>
+    ]<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h3>POST /polling/:id/vote</h3>
+                <p>Submit vote untuk polling.</p>
+
+                <h4>Request Body:</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "option_ids": ["opt_123", "opt_456"] // array untuk multiple choice<br>
+}
+                    </code>
+                </div>
+
+                <h4>Response (200 OK):</h4>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": true,<br>
+  "message": "Vote berhasil disimpan",<br>
+  "data": {<br>
+    "polling_id": "pol_789",<br>
+    "voted_at": "2025-12-16T14:30:00Z"<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h2>Error Responses</h2>
+
+                <h3>400 Bad Request</h3>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": false,<br>
+  "error": {<br>
+    "code": "VALIDATION_ERROR",<br>
+    "message": "Invalid input data",<br>
+    "details": [<br>
+      {<br>
+        "field": "phone",<br>
+        "message": "Phone number is required"<br>
+      }<br>
+    ]<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h3>401 Unauthorized</h3>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": false,<br>
+  "error": {<br>
+    "code": "UNAUTHORIZED",<br>
+    "message": "Invalid or expired token"<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <h3>403 Forbidden</h3>
+                <div class="code-block">
+                    <code>
+{<br>
+  "success": false,<br>
+  "error": {<br>
+    "code": "FORBIDDEN",<br>
+    "message": "You don't have permission to access this resource"<br>
+  }<br>
+}
+                    </code>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-icon">📚</div>
+                    <div>
+                        <h4>Complete API Documentation</h4>
+                        <p>Untuk dokumentasi API lengkap dengan semua endpoints, lihat: <a href="https://api.wargago.id/docs" target="_blank">api.wargago.id/docs</a> (Swagger/OpenAPI)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Database Schema -->
+            <section id="database-schema" class="doc-section">
+                <h1>Database Schema</h1>
+                <p class="lead">Entity Relationship Diagram dan struktur tabel database WARGAGO.</p>
+
+                <h2>Core Tables</h2>
+
+                <h3>users</h3>
+                <div class="code-block">
+                    <code>
+CREATE TABLE users (<br>
+  id VARCHAR(36) PRIMARY KEY,<br>
+  rt_rw_id VARCHAR(36) NOT NULL,<br>
+  kk_number VARCHAR(16),<br>
+  nik VARCHAR(16) UNIQUE,<br>
+  name VARCHAR(255) NOT NULL,<br>
+  phone VARCHAR(20) UNIQUE NOT NULL,<br>
+  email VARCHAR(255),<br>
+  password_hash VARCHAR(255) NOT NULL,<br>
+  role ENUM('super_admin', 'admin', 'bendahara', 'sekretaris', 'warga'),<br>
+  status ENUM('active', 'inactive', 'moved', 'deceased'),<br>
+  date_of_birth DATE,<br>
+  address TEXT,<br>
+  house_number VARCHAR(10),<br>
+  profile_photo_url VARCHAR(500),<br>
+  ktp_photo_url VARCHAR(500),<br>
+  face_photo_url VARCHAR(500),<br>
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  FOREIGN KEY (rt_rw_id) REFERENCES rt_rw(id)<br>
+);
+                    </code>
+                </div>
+
+                <h3>rt_rw</h3>
+                <div class="code-block">
+                    <code>
+CREATE TABLE rt_rw (<br>
+  id VARCHAR(36) PRIMARY KEY,<br>
+  rt_number VARCHAR(3) NOT NULL,<br>
+  rw_number VARCHAR(3) NOT NULL,<br>
+  name VARCHAR(255),<br>
+  address TEXT,<br>
+  kelurahan VARCHAR(100),<br>
+  kecamatan VARCHAR(100),<br>
+  city VARCHAR(100),<br>
+  province VARCHAR(100),<br>
+  postal_code VARCHAR(10),<br>
+  total_kk INTEGER DEFAULT 0,<br>
+  total_warga INTEGER DEFAULT 0,<br>
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP<br>
+);
+                    </code>
+                </div>
+
+                <h3>transactions</h3>
+                <div class="code-block">
+                    <code>
+CREATE TABLE transactions (<br>
+  id VARCHAR(36) PRIMARY KEY,<br>
+  rt_rw_id VARCHAR(36) NOT NULL,<br>
+  type ENUM('income', 'expense') NOT NULL,<br>
+  category VARCHAR(50) NOT NULL,<br>
+  amount DECIMAL(15, 2) NOT NULL,<br>
+  description TEXT,<br>
+  transaction_date DATE NOT NULL,<br>
+  proof_url VARCHAR(500),<br>
+  created_by VARCHAR(36) NOT NULL,<br>
+  notes TEXT,<br>
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  FOREIGN KEY (rt_rw_id) REFERENCES rt_rw(id),<br>
+  FOREIGN KEY (created_by) REFERENCES users(id)<br>
+);
+                    </code>
+                </div>
+
+                <h3>iuran</h3>
+                <div class="code-block">
+                    <code>
+CREATE TABLE iuran (<br>
+  id VARCHAR(36) PRIMARY KEY,<br>
+  user_id VARCHAR(36) NOT NULL,<br>
+  jenis VARCHAR(50) NOT NULL,<br>
+  nominal DECIMAL(15, 2) NOT NULL,<br>
+  month INTEGER NOT NULL,<br>
+  year INTEGER NOT NULL,<br>
+  status ENUM('pending', 'lunas', 'terlambat') DEFAULT 'pending',<br>
+  due_date DATE,<br>
+  paid_at TIMESTAMP,<br>
+  paid_amount DECIMAL(15, 2),<br>
+  payment_method VARCHAR(50),<br>
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  FOREIGN KEY (user_id) REFERENCES users(id)<br>
+);
+                    </code>
+                </div>
+
+                <h3>polling</h3>
+                <div class="code-block">
+                    <code>
+CREATE TABLE polling (<br>
+  id VARCHAR(36) PRIMARY KEY,<br>
+  rt_rw_id VARCHAR(36) NOT NULL,<br>
+  title VARCHAR(255) NOT NULL,<br>
+  description TEXT,<br>
+  type ENUM('single', 'multiple') DEFAULT 'single',<br>
+  mode ENUM('named', 'anonymous') DEFAULT 'named',<br>
+  status ENUM('draft', 'active', 'closed') DEFAULT 'draft',<br>
+  deadline TIMESTAMP,<br>
+  created_by VARCHAR(36) NOT NULL,<br>
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+  FOREIGN KEY (rt_rw_id) REFERENCES rt_rw(id),<br>
+  FOREIGN KEY (created_by) REFERENCES users(id)<br>
+);
+                    </code>
+                </div>
+
+                <h2>Relationships</h2>
+                <p>Relasi antar tabel:</p>
+                <ul>
+                    <li><strong>rt_rw</strong> has many <strong>users</strong> (1:N)</li>
+                    <li><strong>rt_rw</strong> has many <strong>transactions</strong> (1:N)</li>
+                    <li><strong>users</strong> has many <strong>iuran</strong> (1:N)</li>
+                    <li><strong>polling</strong> has many <strong>polling_options</strong> (1:N)</li>
+                    <li><strong>polling</strong> has many <strong>votes</strong> (1:N)</li>
+                    <li><strong>users</strong> has many <strong>votes</strong> (1:N)</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">📊</div>
+                    <div>
+                        <h4>ERD Diagram</h4>
+                        <p>Untuk melihat Entity Relationship Diagram lengkap, kunjungi: <a href="https://dbdiagram.io/wargago" target="_blank">dbdiagram.io/wargago</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panduan Kontribusi -->
+            <section id="kontribusi" class="doc-section">
+                <h1>Panduan Kontribusi</h1>
+                <p class="lead">Berkontribusi untuk development WARGAGO dengan mengikuti panduan ini.</p>
+
+                <h2>Setup Development Environment</h2>
+
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Node.js 20 LTS</li>
+                    <li>PostgreSQL 15</li>
+                    <li>Redis 7</li>
+                    <li>Git</li>
+                    <li>Docker (optional, untuk containerized development)</li>
+                </ul>
+
+                <h3>Clone Repository</h3>
+                <div class="code-block">
+                    <code>
+git clone https://github.com/wargago/wargago-api.git<br>
+cd wargago-api<br>
+npm install
+                    </code>
+                </div>
+
+                <h3>Environment Variables</h3>
+                <p>Copy file <code>.env.example</code> ke <code>.env</code> dan sesuaikan:</p>
+                <div class="code-block">
+                    <code>
+# Database<br>
+DATABASE_URL="postgresql://user:password@localhost:5432/wargago"<br>
+<br>
+# Redis<br>
+REDIS_URL="redis://localhost:6379"<br>
+<br>
+# JWT<br>
+JWT_SECRET="your_secret_key_here"<br>
+JWT_EXPIRES_IN="7d"<br>
+<br>
+# AWS S3<br>
+AWS_ACCESS_KEY_ID="your_aws_key"<br>
+AWS_SECRET_ACCESS_KEY="your_aws_secret"<br>
+AWS_BUCKET_NAME="wargago-uploads"<br>
+<br>
+# OCR API<br>
+OCR_API_KEY="your_ocr_api_key"
+                    </code>
+                </div>
+
+                <h3>Database Migration</h3>
+                <div class="code-block">
+                    <code>
+npx prisma migrate dev<br>
+npx prisma db seed
+                    </code>
+                </div>
+
+                <h3>Run Development Server</h3>
+                <div class="code-block">
+                    <code>
+npm run dev
+                    </code>
+                </div>
+
+                <h2>Git Workflow</h2>
+
+                <h3>Branch Naming</h3>
+                <ul>
+                    <li><code>main</code> - Production branch</li>
+                    <li><code>develop</code> - Development branch</li>
+                    <li><code>feature/nama-fitur</code> - Feature branches</li>
+                    <li><code>bugfix/nama-bug</code> - Bugfix branches</li>
+                    <li><code>hotfix/nama-hotfix</code> - Hotfix branches</li>
+                </ul>
+
+                <h3>Commit Message Convention</h3>
+                <p>Gunakan Conventional Commits:</p>
+                <div class="code-block">
+                    <code>
+feat: menambah fitur polling multiple choice<br>
+fix: perbaiki bug pada kalkulasi iuran<br>
+docs: update API documentation<br>
+style: format code dengan prettier<br>
+refactor: restructure user service<br>
+test: tambah unit test untuk auth<br>
+chore: update dependencies
+                    </code>
+                </div>
+
+                <h3>Pull Request Process</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Buat Branch Baru</h3>
+                            <p><code>git checkout -b feature/nama-fitur</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Commit Changes</h3>
+                            <p>Commit dengan pesan yang jelas dan descriptive</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Push ke GitHub</h3>
+                            <p><code>git push origin feature/nama-fitur</code></p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Create Pull Request</h3>
+                            <p>Buat PR dengan template yang disediakan</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Code Review</h3>
+                            <p>Tunggu review dari maintainer, lakukan revisi jika diminta</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3>Merge</h3>
+                            <p>Setelah approved, PR akan di-merge ke develop</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Coding Standards</h2>
+
+                <h3>TypeScript</h3>
+                <ul>
+                    <li>Selalu gunakan TypeScript, tidak ada plain JavaScript</li>
+                    <li>Definisikan type untuk semua function parameters dan return values</li>
+                    <li>Gunakan interface untuk object types</li>
+                    <li>Avoid <code>any</code> type sebisa mungkin</li>
+                </ul>
+
+                <h3>Code Style</h3>
+                <ul>
+                    <li>Gunakan ESLint dan Prettier untuk formatting</li>
+                    <li>2 spaces untuk indentation</li>
+                    <li>Single quotes untuk strings</li>
+                    <li>Trailing commas di object dan array</li>
+                </ul>
+
+                <h3>Testing</h3>
+                <ul>
+                    <li>Semua fitur baru harus memiliki unit test</li>
+                    <li>Target coverage: minimal 80%</li>
+                    <li>Gunakan Jest untuk unit testing</li>
+                    <li>Run test sebelum commit: <code>npm test</code></li>
+                </ul>
+
+                <h2>Documentation</h2>
+                <p>Untuk setiap fitur baru, update dokumentasi:</p>
+                <ul>
+                    <li>API documentation (Swagger/OpenAPI)</li>
+                    <li>README.md di repository</li>
+                    <li>Inline code comments untuk logic yang kompleks</li>
+                    <li>User guide jika ada perubahan UI/UX</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Code of Conduct</h4>
+                        <p>Semua kontributor harus mengikuti <a href="https://github.com/wargago/wargago-api/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a> kami. Be respectful, be professional.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="docs-pagination">
+                <a href="features.html" class="btn-prev">← Kembali: Fitur Utama</a>
+                <a href="index.html" class="btn-next">Kembali ke Home →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="docs-script.js"></script>
+</body>
+</html>
+

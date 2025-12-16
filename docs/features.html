@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitur Utama WARGAGO - Dokumentasi Detail</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="docs-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../wargago-logo.png" alt="WARGAGO Logo" class="logo-image">
+                <span class="logo-text">WARGAGO</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html">Home</a>
+                <a href="index.html">Dokumentasi</a>
+                <a href="features.html" class="active">Fitur</a>
+            </div>
+            <button class="btn-download">Download App</button>
+        </div>
+    </nav>
+
+    <div class="docs-layout">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Fitur Utama</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#manajemen-warga" class="active">Manajemen Data Warga</a></li>
+                    <li><a href="#sistem-keuangan">Sistem Keuangan</a></li>
+                    <li><a href="#agenda">Agenda & Kegiatan</a></li>
+                    <li><a href="#polling">Polling & Voting</a></li>
+                    <li><a href="#marketplace">Marketplace</a></li>
+                    <li><a href="#laporan">Dashboard & Laporan</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Navigasi Cepat</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">← Kembali ke Dokumentasi</a></li>
+                    <li><a href="developer.html">Developer Guide →</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <!-- Manajemen Data Warga -->
+            <section id="manajemen-warga" class="doc-section">
+                <h1>Manajemen Data Warga</h1>
+                <p class="lead">Sistem KYC (Know Your Customer) otomatis dengan teknologi OCR dan face detection untuk pengelolaan data warga yang akurat dan terverifikasi.</p>
+
+                <h2>Fitur Utama</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>🎯 OCR Otomatis</h3>
+                        <p>Ekstraksi data KTP/KK otomatis dengan akurasi tinggi menggunakan teknologi OCR</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>👤 Face Detection</h3>
+                        <p>Verifikasi identitas dengan pencocokan foto wajah untuk keamanan tambahan</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🏠 Struktur Keluarga</h3>
+                        <p>Database terorganisir per rumah dan kepala keluarga (KK)</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📊 Data Terstruktur</h3>
+                        <p>Informasi lengkap: NIK, nama, alamat, kontak, status, dll</p>
+                    </div>
+                </div>
+
+                <h2>Proses Upload & Verifikasi KTP</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Upload Foto KTP</h3>
+                            <p>Admin/Sekretaris upload foto KTP yang jelas (landscape, tidak blur)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>OCR Processing</h3>
+                            <p>Sistem otomatis ekstrak: NIK, Nama, Tempat/Tanggal Lahir, Alamat, Agama, Status Perkawinan, Pekerjaan, Kewarganegaraan</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Review & Koreksi</h3>
+                            <p>Admin cek hasil OCR dan koreksi jika ada kesalahan (akurasi ~95%)</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Face Capture</h3>
+                            <p>Ambil foto wajah langsung atau crop dari KTP untuk verifikasi</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Simpan & Verifikasi</h3>
+                            <p>Data tersimpan dengan status "Terverifikasi" atau "Pending"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Data yang Tercatat</h2>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Kategori</th>
+                                <th>Field Data</th>
+                                <th>Sumber</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="7">Identitas</td>
+                                <td>NIK</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Nama Lengkap</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Tempat/Tanggal Lahir</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Kelamin</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Agama</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Status Perkawinan</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Pekerjaan</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Kontak</td>
+                                <td>Nomor HP</td>
+                                <td>Manual Input</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>Manual Input</td>
+                            </tr>
+                            <tr>
+                                <td>Kontak Darurat</td>
+                                <td>Manual Input</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3">Domisili</td>
+                                <td>Alamat KTP</td>
+                                <td>OCR KTP</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat Domisili</td>
+                                <td>Manual Input</td>
+                            </tr>
+                            <tr>
+                                <td>Nomor Rumah RT/RW</td>
+                                <td>Manual Input</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Keluarga</td>
+                                <td>Nomor KK</td>
+                                <td>OCR KK</td>
+                            </tr>
+                            <tr>
+                                <td>Hubungan Keluarga</td>
+                                <td>Manual Input</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Fitur Pencarian</h2>
+                <p>Cari warga dengan berbagai kriteria:</p>
+                <ul>
+                    <li>Nama (auto-complete)</li>
+                    <li>NIK</li>
+                    <li>Nomor KK</li>
+                    <li>Nomor Rumah</li>
+                    <li>Status (Aktif, Pindah, Meninggal)</li>
+                    <li>Filter: Usia, Jenis Kelamin, Pekerjaan, dll</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">🔒</div>
+                    <div>
+                        <h4>Keamanan Data</h4>
+                        <p>Semua data pribadi dienkripsi dan hanya bisa diakses oleh role yang berwenang. Sesuai dengan UU Perlindungan Data Pribadi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sistem Keuangan -->
+            <section id="sistem-keuangan" class="doc-section">
+                <h1>Sistem Keuangan Terintegrasi</h1>
+                <p class="lead">Manajemen keuangan RT/RW yang transparan, akurat, dan mudah diaudit dengan sistem double-entry bookkeeping.</p>
+
+                <h2>Komponen Keuangan</h2>
+
+                <h3>1. Pemasukan (Income)</h3>
+                <ul class="feature-list">
+                    <li><strong>Iuran Warga</strong> - Iuran bulanan RT, RW, sampah, keamanan</li>
+                    <li><strong>Donasi</strong> - Sumbangan dari warga atau pihak eksternal</li>
+                    <li><strong>Usaha</strong> - Hasil usaha RT/RW (sewa tempat, dll)</li>
+                    <li><strong>Lain-lain</strong> - Pemasukan tidak terkategori</li>
+                </ul>
+
+                <h3>2. Pengeluaran (Expense)</h3>
+                <ul class="feature-list">
+                    <li><strong>Operasional</strong> - Listrik, air, ATK, dll</li>
+                    <li><strong>Kegiatan</strong> - Biaya acara dan konsumsi rapat</li>
+                    <li><strong>Infrastruktur</strong> - Perbaikan jalan, lampu, taman</li>
+                    <li><strong>Kebersihan</strong> - Sampah, cleaning service</li>
+                    <li><strong>Keamanan</strong> - Satpam, CCTV</li>
+                    <li><strong>Lain-lain</strong> - Pengeluaran tidak terkategori</li>
+                </ul>
+
+                <h2>Manajemen Iuran</h2>
+
+                <h3>Setting Iuran Bulanan</h3>
+                <div class="code-block">
+                    <code>
+Bendahara → Keuangan → Setting Iuran<br>
+<br>
+Jenis Iuran:<br>
+✓ Iuran RT (contoh: Rp 10.000/bulan)<br>
+✓ Iuran RW (contoh: Rp 5.000/bulan)<br>
+✓ Iuran Sampah (contoh: Rp 20.000/bulan)<br>
+✓ Iuran Keamanan (opsional)<br>
+✓ Iuran Khusus (event-based)<br>
+<br>
+Pengaturan:<br>
+• Tanggal jatuh tempo (contoh: tanggal 5 setiap bulan)<br>
+• Auto-generate tagihan (Ya/Tidak)<br>
+• Denda keterlambatan (opsional)<br>
+• Metode pembayaran (Tunai/Transfer)
+                    </code>
+                </div>
+
+                <h3>Status Pembayaran</h3>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>✅ Lunas</h3>
+                        <p>Iuran sudah dibayar penuh sesuai nominal</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>⏳ Pending</h3>
+                        <p>Tagihan dibuat tapi belum dibayar</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>⚠️ Terlambat</h3>
+                        <p>Melewati jatuh tempo, mungkin ada denda</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>💰 Cicilan</h3>
+                        <p>Dibayar sebagian, sisa menunggak</p>
+                    </div>
+                </div>
+
+                <h2>Laporan Keuangan</h2>
+
+                <h3>Dashboard Real-time</h3>
+                <p>Informasi keuangan yang selalu update:</p>
+                <ul>
+                    <li><strong>Saldo Kas:</strong> Total uang di kas saat ini</li>
+                    <li><strong>Pemasukan Bulan Ini:</strong> Total income periode berjalan</li>
+                    <li><strong>Pengeluaran Bulan Ini:</strong> Total expense periode berjalan</li>
+                    <li><strong>Cash Flow:</strong> Grafik tren 6-12 bulan</li>
+                    <li><strong>Piutang Iuran:</strong> Total tagihan yang belum dibayar</li>
+                </ul>
+
+                <h3>Export Laporan</h3>
+                <p>Generate laporan dalam berbagai format:</p>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>📄 PDF</h3>
+                        <p>Format profesional siap print untuk rapat atau ditempel</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📊 Excel</h3>
+                        <p>Format spreadsheet untuk analisis lebih lanjut</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📋 CSV</h3>
+                        <p>Format universal untuk import ke sistem lain</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📱 Share</h3>
+                        <p>Langsung share ke WhatsApp group warga</p>
+                    </div>
+                </div>
+
+                <h2>Audit Trail</h2>
+                <p>Setiap transaksi tercatat lengkap dengan:</p>
+                <ul>
+                    <li>Timestamp (tanggal dan waktu)</li>
+                    <li>User yang input (bendahara/admin)</li>
+                    <li>Detail transaksi lengkap</li>
+                    <li>Bukti transaksi (foto nota/transfer)</li>
+                    <li>Saldo sebelum dan sesudah transaksi</li>
+                    <li>Catatan tambahan</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Penting!</h4>
+                        <p>Transaksi yang sudah dicatat tidak bisa dihapus, hanya bisa dibatalkan dengan jurnal balik untuk menjaga integritas data dan audit trail.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agenda & Kegiatan -->
+            <section id="agenda" class="doc-section">
+                <h1>Agenda & Kegiatan</h1>
+                <p class="lead">Kelola semua kegiatan RT/RW dengan sistem kalender terintegrasi, RSVP otomatis, dan reminder cerdas.</p>
+
+                <h2>Jenis Kegiatan</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>🗓️ Rutin</h3>
+                        <p>Kegiatan berulang: arisan, pengajian, kerja bakti bulanan</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🎉 Event</h3>
+                        <p>Kegiatan khusus: perayaan 17 Agustus, buka bersama, dll</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>👥 Rapat</h3>
+                        <p>Rapat pengurus atau rapat warga</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🚨 Mendadak</h3>
+                        <p>Kegiatan dadakan: gotong royong, musibah, dll</p>
+                    </div>
+                </div>
+
+                <h2>Membuat Kegiatan Baru</h2>
+                <div class="code-block">
+                    <code>
+Admin → Agenda → Tambah Kegiatan Baru<br>
+<br>
+Form yang harus diisi:<br>
+• Judul kegiatan *<br>
+• Jenis kegiatan *<br>
+• Tanggal & Waktu *<br>
+• Lokasi/Tempat *<br>
+• Deskripsi<br>
+• Butuh RSVP? (Ya/Tidak)<br>
+• Deadline RSVP<br>
+• Target peserta (Semua warga/Pengurus saja/Custom)<br>
+• Upload poster/gambar (opsional)<br>
+• Set reminder (H-7, H-3, H-1, H-0)<br>
+<br>
+* = field wajib
+                    </code>
+                </div>
+
+                <h2>RSVP & Attendance</h2>
+
+                <h3>Konfirmasi Kehadiran</h3>
+                <p>Warga dapat konfirmasi kehadiran dengan 3 status:</p>
+                <ul>
+                    <li><strong>✅ Hadir</strong> - Akan datang ke acara</li>
+                    <li><strong>❌ Tidak Hadir</strong> - Tidak bisa hadir</li>
+                    <li><strong>❓ Mungkin</strong> - Belum pasti</li>
+                </ul>
+
+                <h3>Tracking Kehadiran</h3>
+                <p>Admin bisa melihat real-time:</p>
+                <ul>
+                    <li>Total yang sudah RSVP vs belum</li>
+                    <li>Persentase kehadiran</li>
+                    <li>List nama per status</li>
+                    <li>Export daftar hadir ke Excel</li>
+                </ul>
+
+                <h2>Reminder Otomatis</h2>
+                <p>Sistem mengirim notifikasi otomatis:</p>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Timing</th>
+                                <th>Channel</th>
+                                <th>Pesan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>H-7</td>
+                                <td>Push Notification</td>
+                                <td>Info kegiatan minggu depan</td>
+                            </tr>
+                            <tr>
+                                <td>H-3</td>
+                                <td>Push + WhatsApp</td>
+                                <td>Reminder + link RSVP</td>
+                            </tr>
+                            <tr>
+                                <td>H-1</td>
+                                <td>Push + WhatsApp</td>
+                                <td>Reminder + detail lokasi</td>
+                            </tr>
+                            <tr>
+                                <td>H-0 (pagi)</td>
+                                <td>Push Notification</td>
+                                <td>Reminder hari ini + jam mulai</td>
+                            </tr>
+                            <tr>
+                                <td>H-0 (1 jam sebelum)</td>
+                                <td>Push Notification</td>
+                                <td>Acara dimulai dalam 1 jam</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Integrasi Kalender</h2>
+                <p>Warga bisa sync agenda ke kalender pribadi:</p>
+                <ul>
+                    <li>Google Calendar</li>
+                    <li>Apple Calendar (iCal)</li>
+                    <li>Outlook Calendar</li>
+                    <li>Download file .ics</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Best Practice:</strong> Untuk kegiatan besar, aktifkan RSVP agar bisa persiapan konsumsi dan tempat sesuai estimasi peserta.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Polling & Voting -->
+            <section id="polling" class="doc-section">
+                <h1>Polling & Voting Digital</h1>
+                <p class="lead">Sistem voting demokratis dengan hasil real-time dan transparansi penuh untuk pengambilan keputusan bersama.</p>
+
+                <h2>Jenis Polling</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>☑️ Single Choice</h3>
+                        <p>Pilih satu opsi. Cocok untuk: Ya/Tidak, Setuju/Tidak Setuju, Pilihan A/B/C</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>☑️ Multiple Choice</h3>
+                        <p>Pilih beberapa opsi. Cocok untuk: survey preferensi, prioritas kegiatan</p>
+                    </div>
+                </div>
+
+                <h2>Mode Voting</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>👤 Named Voting</h3>
+                        <p>Voting dengan nama. Hasilnya menampilkan siapa memilih apa.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🕵️ Anonymous Voting</h3>
+                        <p>Voting anonim. Hanya total suara yang terlihat, bukan siapa yang vote.</p>
+                    </div>
+                </div>
+
+                <h2>Membuat Polling</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Judul & Deskripsi</h3>
+                            <p>Buat judul polling yang jelas dan deskripsi detail tentang topik yang dipilih</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Tambah Opsi</h3>
+                            <p>Minimal 2 opsi, maksimal 10 opsi. Bisa tambah gambar per opsi.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Setting</h3>
+                            <p>Pilih jenis (single/multiple), mode (named/anonymous), dan deadline</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Preview & Publikasikan</h3>
+                            <p>Preview dulu, kalau sudah OK klik publikasikan</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Notifikasi Terkirim</h3>
+                            <p>Semua warga dapat push notification ada polling baru</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Voting Process</h2>
+                <p>Warga yang berhak vote:</p>
+                <ul>
+                    <li>Warga dengan status "Aktif"</li>
+                    <li>Usia 17 tahun ke atas (bisa disesuaikan)</li>
+                    <li>1 KK = 1 suara (atau 1 orang = 1 suara)</li>
+                </ul>
+
+                <h2>Hasil Polling</h2>
+
+                <h3>Real-time Results</h3>
+                <p>Admin dan warga bisa lihat hasil secara real-time (jika disetting demikian):</p>
+                <ul>
+                    <li>Total suara per opsi</li>
+                    <li>Persentase per opsi</li>
+                    <li>Visualisasi bar chart</li>
+                    <li>Jumlah yang sudah vote vs belum vote</li>
+                    <li>Tingkat partisipasi (%)</li>
+                </ul>
+
+                <h3>Opsi Visibilitas Hasil</h3>
+                <div class="permissions-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mode</th>
+                                <th>Saat Polling Aktif</th>
+                                <th>Setelah Deadline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hasil Real-time</td>
+                                <td>Semua bisa lihat hasil sementara</td>
+                                <td>Semua bisa lihat hasil akhir</td>
+                            </tr>
+                            <tr>
+                                <td>Hasil Tersembunyi</td>
+                                <td>Hanya admin yang lihat</td>
+                                <td>Semua bisa lihat hasil akhir</td>
+                            </tr>
+                            <tr>
+                                <td>Admin Only</td>
+                                <td>Hanya admin yang lihat</td>
+                                <td>Hanya admin yang lihat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Export Hasil</h2>
+                <p>Download hasil polling untuk dokumentasi:</p>
+                <ul>
+                    <li>PDF - Laporan lengkap dengan chart</li>
+                    <li>Excel - Data voting untuk analisis</li>
+                    <li>Image - Screenshot chart untuk share</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">🔒</div>
+                    <div>
+                        <h4>Keamanan Voting</h4>
+                        <p>Setiap warga hanya bisa vote 1 kali. Sistem mencatat timestamp dan mencegah double voting.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marketplace -->
+            <section id="marketplace" class="doc-section">
+                <h1>Marketplace Warga</h1>
+                <p class="lead">Platform jual-beli internal untuk produk lokal warga. Perkuat ekonomi lokal dengan belanja dari tetangga.</p>
+
+                <h2>Kategori Produk</h2>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>🥬 Sayuran & Buah</h3>
+                        <p>Sayuran segar, buah-buahan dari kebun warga</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🍜 Makanan & Minuman</h3>
+                        <p>Makanan rumahan, kue, jajanan, minuman</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🏠 Kebutuhan Rumah</h3>
+                        <p>Peralatan rumah tangga, dekorasi, furniture</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>👕 Fashion</h3>
+                        <p>Pakaian, aksesoris, sepatu</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📚 Hobi & Edukasi</h3>
+                        <p>Buku, mainan anak, alat hobi</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🛠️ Jasa</h3>
+                        <p>Service AC, les privat, cuci motor, dll</p>
+                    </div>
+                </div>
+
+                <h2>Untuk Penjual</h2>
+
+                <h3>Upload Produk</h3>
+                <div class="code-block">
+                    <code>
+Marketplace → Jualan Saya → Tambah Produk<br>
+<br>
+Form Produk:<br>
+• Foto produk (1-5 foto) *<br>
+• Nama produk *<br>
+• Kategori *<br>
+• Deskripsi lengkap<br>
+• Harga *<br>
+• Satuan (pcs, kg, porsi, dll)<br>
+• Stok tersedia<br>
+• Kondisi (Baru/Bekas)<br>
+• Lokasi pickup/delivery<br>
+• Jam operasional<br>
+• Metode pembayaran (Tunai/Transfer)<br>
+<br>
+* = field wajib
+                    </code>
+                </div>
+
+                <h3>Kelola Pesanan</h3>
+                <p>Dashboard penjual menampilkan:</p>
+                <ul>
+                    <li><strong>Pesanan Baru</strong> - Order masuk yang belum dikonfirmasi</li>
+                    <li><strong>Dikonfirmasi</strong> - Order sudah dikonfirmasi, sedang diproses</li>
+                    <li><strong>Siap Diambil/Dikirim</strong> - Produk sudah siap</li>
+                    <li><strong>Selesai</strong> - Order sudah diterima pembeli</li>
+                    <li><strong>Dibatalkan</strong> - Order dibatalkan</li>
+                </ul>
+
+                <h3>Notifikasi Penjual</h3>
+                <p>Penjual mendapat notifikasi untuk:</p>
+                <ul>
+                    <li>Pesanan baru masuk</li>
+                    <li>Pembeli chat/tanya produk</li>
+                    <li>Review dari pembeli</li>
+                    <li>Reminder: ada pesanan pending</li>
+                </ul>
+
+                <h2>Untuk Pembeli</h2>
+
+                <h3>Belanja</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Browse Produk</h3>
+                            <p>Lihat produk dari warga, filter per kategori, search by nama</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Tambah ke Cart</h3>
+                            <p>Tambahkan produk yang diinginkan ke shopping cart</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Checkout</h3>
+                            <p>Review pesanan, tambahkan catatan untuk penjual jika perlu</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Konfirmasi & Chat</h3>
+                            <p>Penjual konfirmasi pesanan, chat untuk atur pickup/delivery</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Terima & Review</h3>
+                            <p>Terima produk, tandai selesai, beri review (opsional)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Fitur Chat</h3>
+                <p>Pembeli dan penjual bisa chat langsung dalam app untuk:</p>
+                <ul>
+                    <li>Tanya detail produk</li>
+                    <li>Nego harga (jika penjual allow)</li>
+                    <li>Atur waktu pengambilan</li>
+                    <li>Koordinasi pengiriman</li>
+                </ul>
+
+                <h2>Rating & Review</h2>
+                <p>Pembeli bisa beri rating (1-5 bintang) dan review:</p>
+                <ul>
+                    <li>Rating kualitas produk</li>
+                    <li>Rating pelayanan penjual</li>
+                    <li>Review text (opsional)</li>
+                    <li>Upload foto produk yang diterima (opsional)</li>
+                </ul>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <h4>Catatan Penting</h4>
+                        <p><strong>Marketplace WARGAGO adalah platform internal RT/RW.</strong> Transaksi pembayaran dan pengiriman dilakukan langsung antar warga. WARGAGO hanya menyediakan platform untuk mempertemukan penjual dan pembeli. Silakan bertransaksi dengan jujur dan amanah.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard & Laporan -->
+            <section id="laporan" class="doc-section">
+                <h1>Dashboard & Pelaporan</h1>
+                <p class="lead">Dashboard berbasis role dengan visualisasi data interaktif dan sistem pelaporan otomatis.</p>
+
+                <h2>Dashboard per Role</h2>
+
+                <h3>Super Admin Dashboard</h3>
+                <ul class="feature-list">
+                    <li><strong>Overview RT/RW</strong> - Total warga, KK, rumah</li>
+                    <li><strong>Keuangan</strong> - Saldo, pemasukan, pengeluaran, cash flow chart</li>
+                    <li><strong>Activity Log</strong> - 10 aktivitas terakhir di sistem</li>
+                    <li><strong>Agenda</strong> - Kegiatan mendatang (7 hari ke depan)</li>
+                    <li><strong>Polling Aktif</strong> - Polling yang sedang berjalan + partisipasi</li>
+                    <li><strong>Quick Stats</strong> - Tunggakan iuran, transaksi hari ini</li>
+                </ul>
+
+                <h3>Bendahara Dashboard</h3>
+                <ul class="feature-list">
+                    <li><strong>Saldo Kas</strong> - Real-time balance</li>
+                    <li><strong>Pemasukan Bulan Ini</strong> - Total + breakdown per kategori</li>
+                    <li><strong>Pengeluaran Bulan Ini</strong> - Total + breakdown per kategori</li>
+                    <li><strong>Cash Flow Chart</strong> - Grafik 6 bulan terakhir</li>
+                    <li><strong>Tagihan Pending</strong> - Daftar warga yang belum bayar</li>
+                    <li><strong>Transaksi Terbaru</strong> - 10 transaksi terakhir</li>
+                </ul>
+
+                <h3>Warga Dashboard</h3>
+                <ul class="feature-list">
+                    <li><strong>Tagihan Iuran</strong> - Status pembayaran bulan ini</li>
+                    <li><strong>Agenda</strong> - Kegiatan yang perlu RSVP</li>
+                    <li><strong>Polling</strong> - Polling aktif yang belum divote</li>
+                    <li><strong>Pengumuman</strong> - Info terbaru dari pengurus</li>
+                    <li><strong>Marketplace</strong> - Produk terbaru dari tetangga</li>
+                </ul>
+
+                <h2>Visualisasi Data</h2>
+
+                <h3>Jenis Chart</h3>
+                <div class="grid-2">
+                    <div class="benefit-card">
+                        <h3>📊 Bar Chart</h3>
+                        <p>Untuk perbandingan data: pengeluaran per kategori, iuran per bulan</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📈 Line Chart</h3>
+                        <p>Untuk tren: cash flow, pertumbuhan warga</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🥧 Pie Chart</h3>
+                        <p>Untuk proporsi: distribusi pengeluaran, demografi warga</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📉 Area Chart</h3>
+                        <p>Untuk volume: pemasukan vs pengeluaran over time</p>
+                    </div>
+                </div>
+
+                <h2>Automated Reports</h2>
+                <p>Laporan otomatis yang dihasilkan sistem:</p>
+
+                <h3>Laporan Harian</h3>
+                <ul>
+                    <li>Transaksi keuangan hari ini</li>
+                    <li>Pembayaran iuran yang masuk</li>
+                    <li>Activity log sistem</li>
+                </ul>
+
+                <h3>Laporan Bulanan</h3>
+                <ul>
+                    <li>Rekap keuangan bulan ini (pemasukan, pengeluaran, saldo)</li>
+                    <li>Daftar warga yang lunas vs menunggak</li>
+                    <li>Kegiatan yang sudah dilaksanakan</li>
+                    <li>Polling yang sudah selesai + hasilnya</li>
+                </ul>
+
+                <h3>Laporan Tahunan</h3>
+                <ul>
+                    <li>Laporan keuangan tahunan (neraca)</li>
+                    <li>Pertumbuhan warga</li>
+                    <li>Rekap semua kegiatan</li>
+                    <li>Achievement & highlights tahun ini</li>
+                </ul>
+
+                <h2>Export & Share</h2>
+                <p>Semua laporan bisa di-export dalam format:</p>
+                <ul>
+                    <li><strong>PDF</strong> - Untuk print atau arsip</li>
+                    <li><strong>Excel</strong> - Untuk analisis lebih lanjut</li>
+                    <li><strong>CSV</strong> - Untuk import ke sistem lain</li>
+                    <li><strong>Share Link</strong> - Link view-only untuk dishare ke warga</li>
+                </ul>
+
+                <div class="info-box">
+                    <div class="info-icon">💡</div>
+                    <div>
+                        <p><strong>Transparansi:</strong> Jadwalkan auto-share laporan bulanan ke grup WhatsApp warga setiap tanggal 1 untuk meningkatkan transparansi dan kepercayaan.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="docs-pagination">
+                <a href="index.html" class="btn-prev">← Kembali ke Dokumentasi Utama</a>
+                <a href="developer.html" class="btn-next">Lanjut: Developer Guide →</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="docs-script.js"></script>
+</body>
+</html>
+
