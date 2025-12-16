@@ -281,6 +281,7 @@
 }
 
 .btn-download-app {
+    display: inline-block;
     background: var(--primary-color);
     color: var(--white);
     border: none;
@@ -289,6 +290,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+    text-decoration: none;
 }
 
 .btn-download-app:hover {
